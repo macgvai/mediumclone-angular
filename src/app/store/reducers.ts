@@ -12,5 +12,6 @@ const registerReducer = createReducer(initialState, on(registerAction, (state): 
 })))
 
 export function reducers(state: RegisterStateInterface, action: Action) {
+    console.log(state)
     return registerReducer(state, action);
 }
