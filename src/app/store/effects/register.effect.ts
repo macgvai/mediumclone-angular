@@ -16,10 +16,10 @@ export class RegisterEffect {
                         console.log('a')
                         return registerSuccessAction({currentUser})
                     }),
-                    catchError((e) => {
-                        console.log('b', e)
+                    catchError(() => {
+                        // console.log('b', e)
 
-                        return of(registerSuccessAction)
+                        return of(registerFailureAction())
                     })
                 )
             })

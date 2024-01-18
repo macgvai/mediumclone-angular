@@ -10,6 +10,7 @@ import { AppStateInterface } from "../shared/types/appState.interface";
 import { AsyncPipe } from "@angular/common";
 import { RegisterService } from "./services/register.service";
 import { CurrentUserInterface } from "../shared/types/currentUser.interface";
+import { RegisterRequestInterface } from "./registerRequest.interface";
 
 
 
@@ -48,7 +49,10 @@ export class RegisterComponent implements OnInit {
 
     onSubmit(): void {
         console.log(this.form.value)
-        this.store.dispatch(registerAction(this.form.value))
+        const request: RegisterRequestInterface = {
+            user: this.form.value
+        }
+        this.store.dispatch(registerAction({request}))
         // this.registerService.register(this.form.value).subscribe((currentUser: CurrentUserInterface) => {console.log('currentUser', currentUser)})
     }
 }
