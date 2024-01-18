@@ -9,7 +9,6 @@ import { isSubmitingSelector } from "../store/selectors";
 import { AppStateInterface } from "../shared/types/appState.interface";
 import { AsyncPipe } from "@angular/common";
 import { RegisterService } from "./services/register.service";
-import { CurrentUserInterface } from "../shared/types/currentUser.interface";
 import { RegisterRequestInterface } from "./registerRequest.interface";
 
 
