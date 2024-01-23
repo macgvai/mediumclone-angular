@@ -5,18 +5,20 @@ import { RouterLink } from "@angular/router";
 import { Store, select } from "@ngrx/store";
 import { registerAction } from "../store/actions/register.action";
 import { Observable } from "rxjs";
-import { isSubmitingSelector } from "../store/selectors";
+import { isSubmitingSelector, validationErrorsSelector } from "../store/selectors";
 import { AppStateInterface } from "../shared/types/appState.interface";
-import { AsyncPipe } from "@angular/common";
+import { AsyncPipe, NgIf } from "@angular/common";
 import { RegisterService } from "./services/register.service";
 import { RegisterRequestInterface } from "./registerRequest.interface";
+import { BackendErrorsInterface } from "../shared/types/backenErrors.interface";
+import { BackendErrorMassagesComponent } from "../backendErrorMassages/backendErrorMassages.component";
 
 
 
 @Component({
     selector: 'mc-register',
     standalone: true,
-    imports: [RouterLink, ReactiveFormsModule, AsyncPipe],
+    imports: [RouterLink, ReactiveFormsModule, AsyncPipe, BackendErrorMassagesComponent, NgIf],
     templateUrl: '/src/app/register/register.component.html',
     providers: [RegisterService]
 })
@@ -24,7 +26,8 @@ import { RegisterRequestInterface } from "./registerRequest.interface";
 
 export class RegisterComponent implements OnInit {
     form: FormGroup;
-    isSubmiting$: Observable<boolean>
+    isSubmiting$: Observable<boolean>;
+    backendErrors$: Observable<BackendErrorsInterface | null>;
 
     constructor(private fb: FormBuilder, private store: Store<AppStateInterface>, private registerService: RegisterService ) {}
 
@@ -43,11 +46,10 @@ export class RegisterComponent implements OnInit {
     
     initializeValues(): void {
         this.isSubmiting$ = this.store.pipe(select(isSubmitingSelector))
-        console.log('isSubmiting', this.isSubmiting$)
+        this.backendErrors$ = this.store.pipe(select(validationErrorsSelector))
     }
 
     onSubmit(): void {
-        console.log(this.form.value)
         const request: RegisterRequestInterface = {
             user: this.form.value
         }

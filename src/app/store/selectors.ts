@@ -4,4 +4,12 @@ import { RegisterStateInterface } from "../register/registerState.interface";
 
 export const RegisterFeatureSelector = (state: AppStateInterface): RegisterStateInterface => state.register
 
-export const isSubmitingSelector = createSelector(RegisterFeatureSelector, (registerState: RegisterStateInterface) => registerState.isSubmitting)
+export const isSubmitingSelector = createSelector(
+    RegisterFeatureSelector, 
+    (registerState: RegisterStateInterface) => registerState.isSubmitting
+)
+export const validationErrorsSelector = createSelector(
+    RegisterFeatureSelector, 
+    (registerState: RegisterStateInterface) => registerState.validationErrors
+)
+

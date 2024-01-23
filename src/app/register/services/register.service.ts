@@ -17,7 +17,6 @@ export class RegisterService {
 
     register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
         const url = environment.apiUrl + '/users'
-        console.log('data', data)
         return this.http.post<AuthResponseInterface>(url, data).pipe(map((response: AuthResponseInterface) => response.user))
     }
 }

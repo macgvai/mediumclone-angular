@@ -10,7 +10,10 @@
             </a>
           </p>
   
-            backend errors 
+          <mc-backend-error-massages class="error-messages"
+            *ngIf="backendErrors$ | async"
+            [backendErrors]="backendErrors$ | async"
+          ></mc-backend-error-massages>
 
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <fieldset>

@@ -39,6 +39,5 @@ const registerReducer = createReducer(
 )
 
 export function reducers(state: RegisterStateInterface, action: Action) {
-    console.log('action', action)
     return registerReducer(state, action);
 }
