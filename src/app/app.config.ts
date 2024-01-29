@@ -8,6 +8,7 @@ import { reducers } from './store/reducers';
 import { provideEffects } from '@ngrx/effects';
 import { RegisterEffect } from './store/effects/register.effect';
 import { provideHttpClient } from '@angular/common/http';
+import { LoginEffect } from './store/effects/login.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,7 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideStore(), 
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), 
     provideState({ name: 'register', reducer: reducers }),
-    provideEffects([RegisterEffect]),
+    provideEffects([RegisterEffect, LoginEffect]),
     provideHttpClient()
   ]
 };

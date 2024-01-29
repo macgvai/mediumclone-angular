@@ -5,6 +5,7 @@ import { CurrentUserInterface } from "../../shared/types/currentUser.interface";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { AuthResponseInterface } from "../authResponse.Interface";
+import { LoginRequestInterface } from "../../login/loginRequest.interface";
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,21 @@ export class RegisterService {
 
     // https://api.realworld.io/api/users
 
+    getUser(response: AuthResponseInterface): CurrentUserInterface {
+      return response.user
+    }
+
     register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
         const url = environment.apiUrl + '/users'
-        return this.http.post<AuthResponseInterface>(url, data).pipe(map((response: AuthResponseInterface) => response.user))
+        return this.http
+          .post<AuthResponseInterface>(url, data)
+          .pipe(map(this.getUser))
+    }
+
+    login(data: LoginRequestInterface): Observable<CurrentUserInterface> {
+      const url = environment.apiUrl + '/users/login'
+      return this.http
+        .post<AuthResponseInterface>(url, data)
+        .pipe(map(this.getUser))
     }
 }
