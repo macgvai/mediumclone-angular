@@ -13,3 +13,18 @@ export const validationErrorsSelector = createSelector(
     (registerState: RegisterStateInterface) => registerState.validationErrors
 )
 
+
+export const isLoggedInSelector = createSelector(
+    RegisterFeatureSelector, 
+    (registerState: RegisterStateInterface) => registerState.isLoggedIn
+)
+
+export const isAnonymousSelector = createSelector(
+    RegisterFeatureSelector, 
+    (registerState: RegisterStateInterface) => registerState.isLoggedIn === false
+)
+
+export const currentUserSelector = createSelector(
+    RegisterFeatureSelector, 
+    (registerState: RegisterStateInterface) => registerState.currentUser
+)
