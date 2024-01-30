@@ -1,50 +1,46 @@
 <nav class="navbar navbar-light">
-    <div class="container">
-  
-        <a class="navbar-brand" [routerLink]="['/']">conduit</a>
-        <ul class="nav navbar-nav pull-xs-right">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/']">
-                    Home
-                </a>
-            </li>
-  
-            <!-- Show this for logged out users -->
-            <ng-container *ngIf="isAnonymous$ | async">
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/login']">
-                        Sign in
-                    </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/register']">
-                        Sign up
-                    </a>
-                </li>
-            </ng-container>
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/']">conduit</a>
+    <ul class="nav navbar-nav pull-xs-right">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/']"> Home </a>
+      </li>
 
-            <!-- Show this for logged in users -->
-            <ng-container *ngIf="isLoggedIn$ | async">
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/articles/new']">
-                        <i class="ion-compose"></i>&nbsp;New Article
-                    </a>
-                </li>
-        
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/settings']">
-                        <i class="ion-gear-a"></i>&nbsp;Settings
-                    </a>
-                </li>
-        
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/profiles', (currentUser$ | async).username]">
-                        <img class="user-pic" [src]="(currentUser$ | async).image" />
-                        &nbsp; {{(currentUser$ | async).username}}
-                    </a>
-                </li>
-            </ng-container>
-        </ul>
-    </div>
-  </nav>
+      <!-- Show this for logged out users -->
+      <ng-container *ngIf="isAnonymous$ | async">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']"> Sign in </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/register']"> Sign up </a>
+        </li>
+      </ng-container>
+
+      <!-- Show this for logged in users -->
+      <ng-container *ngIf="isLoggedIn$ | async">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/articles/new']">
+            <i class="ion-compose"></i>&nbsp;New Article
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/settings']">
+            <i class="ion-gear-a"></i>&nbsp;Settings
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/profiles', (currentUser$ | async).username]"
+          >
+            <img class="user-pic" [src]="(currentUser$ | async).image" />
+            &nbsp; {{ (currentUser$ | async).username }}
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</nav>
