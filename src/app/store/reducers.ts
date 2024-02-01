@@ -15,7 +15,6 @@ import {
     getCurrentUserFailureAction,
     getCurrentUserSuccessAction,
 } from './actions/getCurrentUser.action';
-import { state } from '@angular/animations';
 
 export const initialState: RegisterStateInterface = {
     isSubmitting: false,
