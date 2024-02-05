@@ -35,7 +35,7 @@ export class RegisterService {
     }
 
     getCurrentUser(): Observable<CurrentUserInterface> {
-        const url = environment.apiUrl + '/users';
+        const url = environment.apiUrl + '/user';
         return this.http.get(url).pipe(map(this.getUser));
     }
 }
