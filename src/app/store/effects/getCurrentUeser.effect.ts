@@ -23,9 +23,13 @@ export class GetCurrentUserEffect {
                 }
                 return this.registerService.getCurrentUser().pipe(
                     map((currentUser: CurrentUserInterface) => {
+                        console.log(currentUser);
+
                         return getCurrentUserSuccessAction({ currentUser });
                     }),
                     catchError((errorResponse: HttpErrorResponse) => {
+                        console.log(errorResponse);
+
                         return of(getCurrentUserFailureAction());
                     })
                 );

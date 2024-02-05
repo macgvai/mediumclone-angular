@@ -1,4 +1,8 @@
-import { ApplicationConfig, isDevMode } from '@angular/core';
+import {
+    ApplicationConfig,
+    importProvidersFrom,
+    isDevMode,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -7,7 +11,12 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { reducers } from './store/reducers';
 import { provideEffects } from '@ngrx/effects';
 import { RegisterEffect } from './store/effects/register.effect';
-import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
+import {
+    HTTP_INTERCEPTORS,
+    HttpClientModule,
+    provideHttpClient,
+    withInterceptors,
+} from '@angular/common/http';
 import { LoginEffect } from './store/effects/login.effect';
 import { GetCurrentUserEffect } from './store/effects/getCurrentUeser.effect';
 import { PresistanceServices } from './shared/services/persistance.service';
@@ -22,6 +31,7 @@ export const appConfig: ApplicationConfig = {
         provideEffects([RegisterEffect, LoginEffect, GetCurrentUserEffect]),
         provideHttpClient(),
         PresistanceServices,
+        importProvidersFrom(HttpClientModule),
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
