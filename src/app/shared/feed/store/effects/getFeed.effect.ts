@@ -10,7 +10,7 @@ import { FeedService } from '../../services/feed.service';
 import { GetFeedREsponseInterface } from '../../types/getFeedREsponse.interface';
 
 @Injectable()
-export class GetCurrentUserEffect {
+export class GetFeedEffect {
     GetFeed$ = createEffect(() =>
         this.actions$.pipe(
             ofType(getFeedAction),

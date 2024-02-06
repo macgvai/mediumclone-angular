@@ -22,6 +22,7 @@ import { GetCurrentUserEffect } from './store/effects/getCurrentUeser.effect';
 import { PresistanceServices } from './shared/services/persistance.service';
 import { AuthInterceptor } from './shared/services/authintercepter.service';
 import { feedReducers } from './shared/feed/store/reducers';
+import { GetFeedEffect } from './shared/feed/store/effects/getFeed.effect';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -34,7 +35,7 @@ export const appConfig: ApplicationConfig = {
             RegisterEffect,
             LoginEffect,
             GetCurrentUserEffect,
-            GetCurrentUserEffect,
+            GetFeedEffect,
         ]),
         provideHttpClient(),
         PresistanceServices,
