@@ -21,6 +21,7 @@ import { LoginEffect } from './store/effects/login.effect';
 import { GetCurrentUserEffect } from './store/effects/getCurrentUeser.effect';
 import { PresistanceServices } from './shared/services/persistance.service';
 import { AuthInterceptor } from './shared/services/authintercepter.service';
+import { feedReducers } from './shared/feed/store/reducers';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -28,7 +29,13 @@ export const appConfig: ApplicationConfig = {
         provideStore(),
         provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
         provideState({ name: 'register', reducer: reducers }),
-        provideEffects([RegisterEffect, LoginEffect, GetCurrentUserEffect]),
+        provideState({ name: 'feed', reducer: feedReducers }),
+        provideEffects([
+            RegisterEffect,
+            LoginEffect,
+            GetCurrentUserEffect,
+            GetCurrentUserEffect,
+        ]),
         provideHttpClient(),
         PresistanceServices,
         importProvidersFrom(HttpClientModule),
