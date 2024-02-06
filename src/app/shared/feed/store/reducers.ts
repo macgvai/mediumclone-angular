@@ -26,7 +26,7 @@ const feedReducer = createReducer(
         (state, action): FeedStateInterface => ({
             ...state,
             isLoading: false,
-            data: action,
+            data: action.feed,
         })
     ),
     on(
