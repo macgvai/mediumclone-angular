@@ -9,7 +9,7 @@ export const getFeedAction = createAction(
 
 export const getFeedSuccessAction = createAction(
     ActionTypes.GET_FEED_SUCCESS,
-    props<GetFeedREsponseInterface>()
+    props<{ feed: GetFeedREsponseInterface }>()
 );
 
 export const getFeedFailureAction = createAction(ActionTypes.GET_FEED_FAILURE);

@@ -17,7 +17,7 @@ export class GetCurrentUserEffect {
             switchMap(({ url }) => {
                 return this.feedService.getFeed(url).pipe(
                     map((feed: GetFeedREsponseInterface) => {
-                        return getFeedSuccessAction(feed);
+                        return getFeedSuccessAction({ feed });
                     }),
                     catchError(() => {
                         return of(getFeedFailureAction());
