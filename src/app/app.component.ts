@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import { Store } from '@ngrx/store';
+import { Store, props } from '@ngrx/store';
 import { getCurrentUserAction } from './store/actions/getCurrentUser.action';
 import { GlobalFeedComponent } from './globalFeed/globalFeed.component';
+import { getFeedAction } from './shared/feed/store/actions/feed.action';
 
 @Component({
     selector: 'app-root',
